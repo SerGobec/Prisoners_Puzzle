@@ -7,17 +7,20 @@ namespace Prisoners_Puzzle
         static void Main(string[] args)
         {
             double success = 0;
-            for(int i = 0; i < 500; i++)
+            double simulationsCount = 1000;
+            int numOfBox = 100;
+            for(int i = 0; i < simulationsCount; i++)
             {
-                RoomWithBox rwb = new RoomWithBox(100);
+                RoomWithBox rwb = new RoomWithBox(numOfBox);
                 rwb.SwapBoxes();
+                rwb.PrintBoxes();
                 Console.WriteLine();
                 bool result = rwb.StartSimulation();
                 if (result) success++;
             }
             Console.WriteLine();
-            Console.WriteLine("Success: " + success);
-            Console.WriteLine("%: " + (success / 500));
+            Console.WriteLine("Successfull tries: " + success + " of " + simulationsCount);
+            Console.WriteLine("Success rate: " + (success / simulationsCount) *100 + "%");
         }
     }
 }
